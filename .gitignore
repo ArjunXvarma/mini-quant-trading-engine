@@ -39,3 +39,6 @@
 
 # debug information files
 *.dwo
+
+# pycache
+Performance/graphs/src/__pycache__

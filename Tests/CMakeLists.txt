@@ -1,3 +1,5 @@
+cmake_minimum_required(VERSION 3.14)
+
 project(Engine_tests)
 
 add_subdirectory(lib/googletest)

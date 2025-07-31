@@ -1,0 +1,27 @@
+name: Engine Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: sudo apt update && sudo apt install -y cmake g++ ninja-build
+
+      - name: Configure CMake from Tests directory
+        run: cmake -S Tests -B build/tests -G Ninja
+
+      - name: Build Engine_tests
+        run: cmake --build build/tests
+
+      - name: Run unit tests
+        run: ./build/tests/Engine_tests

@@ -13,8 +13,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        with:
-          submodules: recursive
 
       - name: Install dependencies
         run: sudo apt update && sudo apt install -y cmake g++ ninja-build

@@ -3,6 +3,7 @@
 //
 
 #include "../../include/Orders/Order.hpp"
+#include <stdexcept>
 
 int Order::orderCounter = 0;
 

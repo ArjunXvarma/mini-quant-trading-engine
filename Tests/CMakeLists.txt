@@ -34,7 +34,6 @@ set(SOURCE_FILES
         ../app/src/OrderMatchingStrategy/PriceTimeOrderMatchingStrategy.cpp
         ../app/src/Trader/Trader.cpp
         ../app/src/MarketDataHandler/MarketDataReader.cpp
-        ../app/src/MarketDataHandler/MarketTick.cpp
         ../app/src/Trader/MeanReversionStrategy.cpp
 )
 

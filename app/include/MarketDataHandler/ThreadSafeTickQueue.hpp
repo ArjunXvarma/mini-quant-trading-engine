@@ -8,7 +8,6 @@
 
 
 #include <atomic>
-#include <optional>
 #include <vector>
 #include "MarketTick.hpp"
 #include "ConcurrentQueue/concurrentqueue.hpp"

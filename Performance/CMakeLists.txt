@@ -22,8 +22,6 @@ add_executable(Performance_test
         ../app/src/Orders/LimitOrderFactory.cpp
         ../app/src/Orders/MarketOrderFactory.cpp
         ../app/src/MarketDataHandler/MarketDataReader.cpp
-        ../app/src/MarketDataHandler/MarketTick.cpp
-        ../app/src/Trader/TradingStrategy.cpp
         ../app/src/Trader/MeanReversionStrategy.cpp
         ../app/src/Utils/Logger.cpp
 

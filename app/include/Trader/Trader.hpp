@@ -35,7 +35,6 @@ public:
     void buy(Stock& stock, int quantity);
     void sell(Stock& stock, int quantity);
 
-    void trade(double, double, int, int);
     int getID() const;
     const std::vector<std::shared_ptr<Order>>& getOrders() const;
     Stock getStock() const;

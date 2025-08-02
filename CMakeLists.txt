@@ -32,9 +32,7 @@ add_executable(Quant_Engine
         app/include/Orders/MarketOrderFactory.hpp
         app/src/MarketDataHandler/MarketDataReader.cpp
         app/include/MarketDataHandler/MarketDataReader.hpp
-        app/src/MarketDataHandler/MarketTick.cpp
         app/include/MarketDataHandler/MarketTick.hpp
-        app/src/Trader/TradingStrategy.cpp
         app/include/Trader/TradingStrategy.hpp
         app/src/Trader/MeanReversionStrategy.cpp
         app/include/Trader/MeanReversionStrategy.hpp

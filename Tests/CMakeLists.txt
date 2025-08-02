@@ -12,7 +12,6 @@ FetchContent_Declare(
         URL https://github.com/google/googletest/archive/refs/tags/v1.14.0.zip
 )
 
-# This makes gtest and gtest_main targets available
 FetchContent_MakeAvailable(googletest)
 
 # -----------------------------
@@ -53,5 +52,4 @@ set(TEST_FILES
 # -----------------------------
 add_executable(Engine_tests ${TEST_FILES} ${SOURCE_FILES})
 
-# Link with GoogleTest
 target_link_libraries(Engine_tests gtest gtest_main)

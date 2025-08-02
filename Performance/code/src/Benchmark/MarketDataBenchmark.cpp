@@ -104,3 +104,19 @@ BenchmarkResult MarketDataBenchmark::runBenchmark() {
         throughput
     };
 }
+
+void runMarketDataBenchmark(bool logConsole, bool exportCSV, bool exportJSON, bool exportLatencies, const std::string& outputPrefix) {
+    Benchmark* benchmark = new MarketDataBenchmark();
+    BenchmarkResult result = benchmark->runBenchmark();
+
+    if (logConsole) MetricsExporter::logToConsole({result});
+    if (exportCSV) MetricsExporter::exportToCSV(outputPrefix + ".csv", {result});
+    if (exportJSON) MetricsExporter::exportToJSON(outputPrefix + ".json", {result});
+
+    if (exportLatencies) {
+        std::vector<long long> latencies = benchmark->getLatencies();
+        MetricsExporter::exportLatenciesToCSV(latencies, "Performance/results/performance/MarketDataLatencies.csv");
+    }
+
+    delete benchmark;
+}

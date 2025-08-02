@@ -4,6 +4,8 @@
 
 #include "../../include/Benchmark/StrategyBenchmark.hpp"
 
+#include "Trader/MeanReversionStrategy.hpp"
+
 StrategyBenchmark::StrategyBenchmark(TradingStrategy& s, Trader& t, OrderBook& b, std::vector<MarketTick> ticks)
     : strategy(s), trader(t), orderBook(b), marketTicks(std::move(ticks)) {}
 
@@ -38,4 +40,28 @@ BenchmarkResult StrategyBenchmark::runBenchmark() {
     result.throughput = latencies.size() / totalDuration;
 
     return result;
+}
+
+void runStrategyBenchmark(bool logConsole, bool exportCSV, bool exportJSON, bool exportLatencies, const std::string& outputPrefix) {
+    Trader trader;
+    OrderBook orderBook;
+    std::vector<MarketTick> ticks = generateMarketTicks(1000);
+    size_t windowSize = 5;
+    double threshold = 0.5;
+
+    MeanReversionStrategy strategy(windowSize, threshold);
+
+    Benchmark* benchmark = new StrategyBenchmark(strategy, trader, orderBook, ticks);
+    BenchmarkResult result = benchmark->runBenchmark();
+
+    if (logConsole) MetricsExporter::logToConsole({result});
+    if (exportCSV) MetricsExporter::exportToCSV(outputPrefix + ".csv", {result});
+    if (exportJSON) MetricsExporter::exportToJSON(outputPrefix + ".json", {result});
+
+    if (exportLatencies) {
+        std::vector<long long> latencies = benchmark->getLatencies();
+        MetricsExporter::exportLatenciesToCSV(latencies, "Performance/results/performance/StrategyLatencies.csv");
+    }
+
+    delete benchmark;
 }

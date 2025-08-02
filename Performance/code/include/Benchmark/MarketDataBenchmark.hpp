@@ -9,6 +9,7 @@
 #include <chrono>
 #include <mutex>
 
+#include "MetricsExporter.hpp"
 #include "../Benchmark/Benchmark.hpp"
 
 class MarketDataBenchmark : public Benchmark {
@@ -18,6 +19,8 @@ public:
     std::string getName() const override;
     BenchmarkResult runBenchmark() override;
 };
+
+void runMarketDataBenchmark(bool logConsole=true, bool exportCSV=false, bool exportJSON=false, bool exportLatencies=false, const std::string& outputPrefix="Tests/results/performance/marketdata");
 
 #endif // MARKETDATABENCHMARK_HPP
 

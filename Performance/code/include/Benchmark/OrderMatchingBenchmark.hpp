@@ -14,6 +14,7 @@
 #include "OrderBook/OrderBook.hpp"
 #include "Orders/MarketOrderFactory.hpp"
 #include "Orders/OrderFactory.hpp"
+#include "MetricsExporter.hpp"
 
 
 class OrderMatchingBenchmark : public Benchmark {
@@ -29,6 +30,8 @@ public:
     BenchmarkResult runBenchmark() override;
     void generateSyntheticOrders(int count);
 };
+
+void runOrderMatchingBenchmark(bool logConsole=true, bool exportCSV=false, bool exportJSON=false, bool exportLatencies=false, const std::string& outputPrefix="Tests/results/performance/order_matching");
 
 
 #endif //ORDERMATCHINGBENCHMARK_HPP

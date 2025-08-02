@@ -32,7 +32,6 @@ void traderReplayMarketData(Trader& trader, OrderBook& orderBook, const std::vec
     for (const auto& tick : ticks) {
         strategy->onTick(tick, trader, orderBook);
 
-        // Optional: sleep to simulate real-time feed
         // std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
 }
@@ -48,8 +47,6 @@ void marketDataProducer(MarketDataReader& reader, Stock& stock, ThreadSafeTickQu
 
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
-
-    // ticks.enqueue(MarketTick::endOfDataSignal());
 }
 
 void consumeMarketData(ThreadSafeTickQueue& ticks, std::atomic<bool>& done, TradingStrategy& strategy, Trader& trader, OrderBook& orderBook) {
@@ -77,7 +74,7 @@ int main() {
     Stock aapl("AAPL", 0.0);
 
     // std::string filename = "../data/mock_data/MeanReversionStrategyTest.csv";
-    std::string filename = "/Users/arjunvarma/Desktop/Programs/C++/Order-Book-Engine/app/data/dxfeed/csv/bid-ask.csv";
+    std::string filename = "app/data/dxfeed/csv/bid-ask.csv";
     MarketDataReader reader(filename);
 
     Trader trader("T001");

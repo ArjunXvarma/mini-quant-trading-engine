@@ -7,6 +7,13 @@
 
 #include <string>
 #include <iostream>
+#include <random>
+#include <chrono>
+#include <vector>
+#include <iomanip>
+#include <sstream>
+
+#include "MarketDataHandler/MarketTick.hpp"
 
 struct BenchmarkResult {
     std::string name;
@@ -31,5 +38,7 @@ public:
         return latencies;
     }
 };
+
+std::vector<MarketTick> generateMarketTicks(size_t count, const std::string& symbol = "AAPL");
 
 #endif //BENCHMARK_HPP

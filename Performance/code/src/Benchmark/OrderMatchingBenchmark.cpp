@@ -7,6 +7,7 @@
 #include <numeric>
 
 #include "OrderBook/OrderBook.hpp"
+#include "OrderMatchingStrategy/PriceTimeOrderMatchingStrategy.hpp"
 #include "Orders/MarketOrder.hpp"
 
 #define ORDER_COUNT 1000000
@@ -54,3 +55,20 @@ BenchmarkResult OrderMatchingBenchmark::runBenchmark() {
     return result;
 }
 
+void runOrderMatchingBenchmark(bool logConsole, bool exportCSV, bool exportJSON, bool exportLatencies, const std::string& outputPrefix) {
+    auto* strategy = new PriceTimeOrderMatchingStrategy();
+    Benchmark* benchmark = new OrderMatchingBenchmark(*strategy);
+    BenchmarkResult result = benchmark->runBenchmark();
+
+    if (logConsole) MetricsExporter::logToConsole({result});
+    if (exportCSV) MetricsExporter::exportToCSV(outputPrefix + ".csv", {result});
+    if (exportJSON) MetricsExporter::exportToJSON(outputPrefix + ".json", {result});
+
+    if (exportLatencies) {
+        std::vector<long long> latencies = benchmark->getLatencies();
+        MetricsExporter::exportLatenciesToCSV(latencies, "Performance/results/performance/OrderMatchingLatencies.csv");
+    }
+
+    delete strategy;
+    delete benchmark;
+}

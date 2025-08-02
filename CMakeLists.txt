@@ -5,10 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 include_directories(app/include)
 
-add_subdirectory(Tests)
-
-# App
-add_executable(Order_Book_Engine
+add_executable(Quant_Engine
         main.cpp
         app/src/Trader/Trader.cpp
         app/include/Trader/Trader.hpp
@@ -46,56 +43,4 @@ add_executable(Order_Book_Engine
         app/include/ConcurrentQueue/concurrentqueue.hpp
         app/include/ConcurrentQueue/lightweightsemaphore.hpp
         app/include/MarketDataHandler/ThreadSafeTickQueue.hpp
-)
-
-# Performance Test
-add_executable(Performance_test
-        Performance/code/main.cpp
-        app/src/Trader/Trader.cpp
-        app/include/Trader/Trader.hpp
-        app/src/MarketDataHandler/Stock.cpp
-        app/include/MarketDataHandler/Stock.hpp
-        app/src/Orders/Order.cpp
-        app/include/Orders/Order.hpp
-        app/src/Orders/MarketOrder.cpp
-        app/include/Orders/MarketOrder.hpp
-        app/src/Orders/LimitOrder.cpp
-        app/include/Orders/LimitOrder.hpp
-        app/src/Orders/OrderFactory.cpp
-        app/include/Orders/OrderFactory.hpp
-        app/src/OrderMatchingStrategy/OrderMatchingStrategy.cpp
-        app/include/OrderMatchingStrategy/OrderMatchingStrategy.hpp
-        app/src/OrderMatchingStrategy/PriceTimeOrderMatchingStrategy.cpp
-        app/include/OrderMatchingStrategy/PriceTimeOrderMatchingStrategy.hpp
-        app/src/OrderBook/OrderBook.cpp
-        app/include/OrderBook/OrderBook.hpp
-        app/include/Orders/OrderType.hpp
-        app/src/Orders/LimitOrderFactory.cpp
-        app/include/Orders/LimitOrderFactory.hpp
-        app/src/Orders/MarketOrderFactory.cpp
-        app/include/Orders/MarketOrderFactory.hpp
-        app/src/MarketDataHandler/MarketDataReader.cpp
-        app/include/MarketDataHandler/MarketDataReader.hpp
-        app/src/MarketDataHandler/MarketTick.cpp
-        app/include/MarketDataHandler/MarketTick.hpp
-        app/src/Trader/TradingStrategy.cpp
-        app/include/Trader/TradingStrategy.hpp
-        app/src/Trader/MeanReversionStrategy.cpp
-        app/include/Trader/MeanReversionStrategy.hpp
-        app/include/Utils/Logger.hpp
-        app/src/Utils/Logger.cpp
-        app/include/ConcurrentQueue/concurrentqueue.hpp
-        app/include/ConcurrentQueue/lightweightsemaphore.hpp
-        app/include/MarketDataHandler/ThreadSafeTickQueue.hpp
-        Performance/code/src/BenchMark/BenchmarkRunner.cpp
-        Performance/code/include/Benchmark/BenchmarkRunner.hpp
-        Performance/code/src/Benchmark/OrderMatchingBenchmark.cpp
-        Performance/code/include/Benchmark/OrderMatchingBenchmark.hpp
-        Performance/code/include/Benchmark/MetricsExporter.hpp
-        Performance/code/src/Benchmark/MetricsExporter.cpp
-        Performance/code/src/Benchmark/MarketDataBenchmark.cpp
-        Performance/code/include/Benchmark/MarketDataBenchmark.hpp
-        Performance/code/src/Benchmark/StrategyBenchmark.cpp
-        Performance/code/include/Benchmark/StrategyBenchmark.hpp
-        Performance/code/include/Benchmark/Benchmark.hpp
 )

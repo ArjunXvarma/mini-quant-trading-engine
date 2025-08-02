@@ -10,6 +10,7 @@
 
 #include "Benchmark.hpp"
 #include "Trader/TradingStrategy.hpp"
+#include "MetricsExporter.hpp"
 
 class StrategyBenchmark : public Benchmark {
 private:
@@ -25,6 +26,7 @@ public:
     BenchmarkResult runBenchmark() override;
 };
 
+void runStrategyBenchmark(bool logConsole=true, bool exportCSV=false, bool exportJSON=false, bool exportLatencies=false, const std::string& outputPrefix="Tests/results/performance/strategy");
 
 
 

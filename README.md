@@ -231,12 +231,6 @@ classDiagram
         +getName() string
     }
 
-    class TraderException {
-        -string message
-        +TraderException(string message)
-        +what() const char*
-    }
-
     class Trader {
         -static int id_counter
         -int id
@@ -250,11 +244,14 @@ classDiagram
         +Trader(string name, Stock stock, OrderFactory* factory, OrderBook* book)
         +buy(Stock stock, int quantity)
         +sell(Stock stock, int quantity)
-        +getID() int
+        +getId() int
         +getOrders() Order[]
         +getStock() Stock
         +~Trader()
     }
+    
+    Trader --> TradingStrategy : uses
+    MeanReversionStrategy --|> TradingStrategy
 ```
 
 This module encapsulates the decision-making and order-execution behavior of market participants. At its core is the `Trader` class, which 

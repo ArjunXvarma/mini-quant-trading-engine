@@ -263,29 +263,39 @@ Trading behavior is governed using the Strategy Pattern. The `TradingStrategy` i
 (`onTick`) and enables different styles of market behavior. The included `MeanReversionStrategy` implementation reacts to deviations from a 
 moving average, executing buy or sell orders based on configurable thresholds.
 
-This design allows for easy extensibility—new strategies can be implemented by subclassing `TradingStrategy`
-and plugged in without modifying the core trading logic. All strategies operate in response to `MarketTick` updates.
+This design allows for easy extensibility—new strategies can be implemented by subclassing `TradingStrategy` and plugged in without 
+modifying the core trading logic. All strategies operate in response to `MarketTick` updates.
 
 ## Modules in action!
+The `main.cpp` file in the root of the project demonstrates a simple use case where multiple modules operate in unison. A `MarketDataReader` 
+object reads real-world market data from a CSV file containing bid-ask updates for a single stock (AAPL), constructs a `MarketTick`, and 
+enqueues it into a `ThreadSafeTickQueue`. In parallel, a `Trader` object consumes these ticks and makes trading decisions using a 
+`MeanReversionStrategy`. The producer (`MarketDataReader`) and consumer (`Trader`) run concurrently in separate threads, illustrating a 
+single-producer single-consumer architecture.
+
 ### 🧩 System Overview
 ```mermaid
 flowchart TD
-    subgraph DataFeed
-        MDR[MarketDataReader] --> TSTQ[ThreadSafeTickQueue]
+%% THREADS
+    subgraph Producer Thread
+        MDR[MarketDataReader] --> TICK[MarketTick]
+        TICK --> STK[Stock]
+        TICK --> TSTQ[ThreadSafeTickQueue]
     end
 
-    subgraph Market
-        TSTQ --> STK[Stock]
+    subgraph Consumer Thread
+        TSTQ --> STRAT[MeanReversionStrategy]
+        STRAT --> TRD[Trader]
+        STRAT -->|buy/sell decision| OF[OrderFactory]
+        OF --> OR[Order]
+        OR --> OB[OrderBook]
     end
 
-    subgraph TraderLogic
-        STK --> TRD[Trader]
-        TRD --> TS[TradingStrategy]
-        TS --> OB[OrderBook]
-        TRD --> OF[OrderFactory]
+    subgraph Matching Engine
+        OB --> MS[OrderMatchingStrategy]
     end
 
-    subgraph MatchingEngine
-        OB --> OMS[OrderMatchingStrategy]
-    end
+%% Static Links
+    TRD --> STK
+    TRD --> OB
 ```

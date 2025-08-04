@@ -30,4 +30,6 @@ add_executable(Performance_test
         code/src/Benchmark/MarketDataBenchmark.cpp
         code/src/Benchmark/StrategyBenchmark.cpp
         code/src/Benchmark/Benchmark.cpp
+        code/src/Benchmark/OrderBookBenchmark.cpp
+        code/include/Benchmark/OrderBookBenchmark.hpp
 )

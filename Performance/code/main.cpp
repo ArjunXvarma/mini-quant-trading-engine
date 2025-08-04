@@ -6,6 +6,7 @@
 #include "include/Benchmark/StrategyBenchmark.hpp"
 #include "../include/MarketDataHandler/MarketTick.hpp"
 #include "include/Benchmark/MarketDataBenchmark.hpp"
+#include "include/Benchmark/OrderBookBenchmark.hpp"
 
 int main() {
     runOrderMatchingBenchmark(
@@ -23,6 +24,13 @@ int main() {
     );
 
     runMarketDataBenchmark(
+        /*logConsole=*/true,
+        /*exportCSV=*/false,
+        /*exportJSON=*/false,
+        /*exportLatencies=*/false
+    );
+
+    runOrderBookBenchmark(
         /*logConsole=*/true,
         /*exportCSV=*/false,
         /*exportJSON=*/false,

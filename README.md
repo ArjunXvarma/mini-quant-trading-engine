@@ -273,7 +273,7 @@ enqueues it into a `ThreadSafeTickQueue`. In parallel, a `Trader` object consume
 `MeanReversionStrategy`. The producer (`MarketDataReader`) and consumer (`Trader`) run concurrently in separate threads, illustrating a 
 single-producer single-consumer architecture.
 
-### 🧩 System Overview
+### Program flow
 ```mermaid
 flowchart TD
 %% THREADS
@@ -299,3 +299,44 @@ flowchart TD
     TRD --> STK
     TRD --> OB
 ```
+
+## How to run
+These instructions guide you on how to run the components as they are used in the `main.cpp` file. The executable can either be created via
+`cmake` or `docker`. 
+
+> **_Note_**: By default, `main.cpp` uses the sample dxfeed csv data and fixed values for the `MeanReversionStrategy` module. Feel free to change 
+these parameters if required.
+
+### Option 1: Run via cmake (Recommended for development)
+Make sure to have `cmake` and a C++ compiler (GCC/Clang) installed.
+
+```
+# Clone the repository
+git clone https://github.com/ArjunXvarma/mini-quant-trading-engine.git
+cd mini-quant-trading-engine
+
+# Create a build directory
+mkdir build && cd build
+
+# Generate Makefiles and build
+cmake ..
+make
+
+# Run the executable
+./Quant_Engine
+```
+
+### Option 2: Run via Docker
+Good option for running the project in a clean, isolated environment.
+
+```
+# Build the Docker image
+docker build -t quant_engine .
+
+# Run the container
+docker run --rm -it quant_engine
+```
+
+> By default logging is disabled, to enable logging go to the `Logger.hpp` file located in `app/include/Utils/Logger.hpp`,
+and define the macro `ENABLE_LOGGING`.
+

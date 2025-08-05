@@ -15,7 +15,7 @@
 class OrderMatchingStrategy {
 public:
     virtual void matchOrders(std::vector<std::shared_ptr<Order>>& restingBuyOrders, std::vector<std::shared_ptr<Order>>& restingSellOrders, std::shared_ptr<Order> incomingOrder) = 0;
-    virtual ~OrderMatchingStrategy();
+    virtual ~OrderMatchingStrategy() {}
 };
 
 

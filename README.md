@@ -357,8 +357,7 @@ conditions.
 
 The CDF for the `OrderbookBenchmark` illustrates the cumulative probability of latencies. The curve rapidly rises toward 1, with more than 
 99% of operations completing well below 100,000 ns, and a long tail extending up to 7,000,000 ns. This skewed distribution confirms 
-consistent low latency in most cases but exposes rare, extreme outliers. These could stem from edge cases in order processing, data 
-structure contention, or GC pauses in the system.
+consistent low latency in most cases but exposes rare, extreme outliers. 
 
 ### OrderMatching Benchmark
 ![Orderbook benchmark latency histogram](Performance/results/graphs/OrderMatchingBenchmark_latency_histogram.png)

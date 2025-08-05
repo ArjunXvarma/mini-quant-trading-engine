@@ -34,7 +34,7 @@ int main() {
         /*logConsole=*/true,
         /*exportCSV=*/false,
         /*exportJSON=*/false,
-        /*exportLatencies=*/false
+        /*exportLatencies=*/true
     );
 
     return 0;

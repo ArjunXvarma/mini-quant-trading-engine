@@ -337,6 +337,39 @@ docker build -t quant_engine .
 docker run --rm -it quant_engine
 ```
 
-> By default logging is disabled, to enable logging go to the `Logger.hpp` file located in `app/include/Utils/Logger.hpp`,
-and define the macro `ENABLE_LOGGING`.
+> By default, logging is disabled, to enable logging go to the `Logger.hpp` file located in `app/include/Utils/`, and define the macro 
+`ENABLE_LOGGING`.
+
+## Performance
+The engine was benchmarked across four key components: `MarketDataReader`, `OrderBook`, `OrderMatchingStrategy` and `TradingStrategy`.
+Below is a summary of their performance characteristics through statistical visualisations.
+
+### MarketData Benchmark
+![MarketDataReader Box plot](Performance/results/graphs/MarketDataBenchmark_box_plot.png)
+The box plot of the `MarketDataBenchmark` shows a highly concentrated distribution of latencies near the lower end of the scale, with a 
+narrow interquartile range. However, numerous outliers are present, extending up to approximately 85,000 ns. This indicates that while
+the system typically handles market data with low latency, there are sporadic latency spikes. The dense clustering at the low end 
+demonstrates strong average-case performance, but the outliers suggest potential sources of jitter or processing delay under certain 
+conditions.
+
+### Orderbook Benchmark
+![Orderbook benchmark CDF](Performance/results/graphs/OrderbookBenchmark_cdf.png)
+
+The CDF for the `OrderbookBenchmark` illustrates the cumulative probability of latencies. The curve rapidly rises toward 1, with more than 
+99% of operations completing well below 100,000 ns, and a long tail extending up to 7,000,000 ns. This skewed distribution confirms 
+consistent low latency in most cases but exposes rare, extreme outliers. These could stem from edge cases in order processing, data 
+structure contention, or GC pauses in the system.
+
+### OrderMatching Benchmark
+![Orderbook benchmark latency histogram](Performance/results/graphs/OrderMatchingBenchmark_latency_histogram.png)
+The histogram of `OrderMatchingBenchmark` latencies is sharply peaked near 0–10 ns, with negligible frequency beyond that. This highlights a 
+highly optimized and deterministic execution path for order matching. The majority of operations fall into the lowest latency bins, 
+suggesting minimal variance and extremely efficient execution. There are virtually no long-tail behaviors, implying tight control over 
+internal scheduling and memory access patterns.
+
+### Strategy Benchmark
+![Strategy benchmark log histogram](Performance/results/graphs/StrategyBenchmark_log_histogram.png)
+The log-scale histogram of StrategyBenchmark (as shown in the uploaded image) shows a heavy concentration of latencies in the 4–6 ns range, 
+with a few operations reaching up to 40 ns. The use of a logarithmic y-axis helps reveal low-frequency higher-latency events that would be 
+obscured on a linear scale. The skew remains mild, with most of the computation finishing within a few nanoseconds.
 

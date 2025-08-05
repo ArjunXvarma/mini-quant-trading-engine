@@ -16,7 +16,6 @@ add_executable(Performance_test
         ../app/src/Orders/MarketOrder.cpp
         ../app/src/Orders/LimitOrder.cpp
         ../app/src/Orders/OrderFactory.cpp
-        ../app/src/OrderMatchingStrategy/OrderMatchingStrategy.cpp
         ../app/src/OrderMatchingStrategy/PriceTimeOrderMatchingStrategy.cpp
         ../app/src/OrderBook/OrderBook.cpp
         ../app/src/Orders/LimitOrderFactory.cpp

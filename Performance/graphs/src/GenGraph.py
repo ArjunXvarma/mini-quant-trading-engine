@@ -65,7 +65,7 @@ class GenGraph:
         self.logScaleHistogram(save)
 
     def _save_fig(self, fig_type: str):
-        dir_path = f"Tests/results/graphs"
+        dir_path = f"Performance/results/graphs"
         os.makedirs(dir_path, exist_ok=True)
         plt.savefig(f"{dir_path}/{self.benchmark_name}_{fig_type}.png", dpi=300)
         plt.close()

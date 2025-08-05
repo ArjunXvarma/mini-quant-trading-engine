@@ -19,7 +19,6 @@ add_executable(Quant_Engine
         app/include/Orders/LimitOrder.hpp
         app/src/Orders/OrderFactory.cpp
         app/include/Orders/OrderFactory.hpp
-        app/src/OrderMatchingStrategy/OrderMatchingStrategy.cpp
         app/include/OrderMatchingStrategy/OrderMatchingStrategy.hpp
         app/src/OrderMatchingStrategy/PriceTimeOrderMatchingStrategy.cpp
         app/include/OrderMatchingStrategy/PriceTimeOrderMatchingStrategy.hpp

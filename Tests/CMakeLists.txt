@@ -30,7 +30,6 @@ set(SOURCE_FILES
         ../app/src/Orders/Order.cpp
         ../app/src/Orders/LimitOrder.cpp
         ../app/src/Orders/MarketOrder.cpp
-        ../app/src/OrderMatchingStrategy/OrderMatchingStrategy.cpp
         ../app/src/OrderMatchingStrategy/PriceTimeOrderMatchingStrategy.cpp
         ../app/src/Trader/Trader.cpp
         ../app/src/MarketDataHandler/MarketDataReader.cpp

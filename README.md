@@ -372,3 +372,12 @@ The log-scale histogram of StrategyBenchmark (as shown in the uploaded image) sh
 with a few operations reaching up to 40 ns. The use of a logarithmic y-axis helps reveal low-frequency higher-latency events that would be 
 obscured on a linear scale. The skew remains mild, with most of the computation finishing within a few nanoseconds.
 
+> More graphs can be found in the `Performance/results/graphs` folder.
+
+### Future improvements
+While the engine performs decently well, there is still significant room for improvement. Planned optimizations include:
+- Replacing the current `vector + sort` implementation in the `OrderBook` with a more efficient data structure that supports `O(log n)`
+insertions (e.g., balanced trees or heaps).
+- Exploring lock-free or concurrent data structures to eliminate mutex overhead in the `OrderBook`.
+- Reducing tail latencies (p95, p99, and max latency) across all components to improve consistency under high load.
+

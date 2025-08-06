@@ -381,3 +381,6 @@ insertions (e.g., balanced trees or heaps).
 - Exploring lock-free or concurrent data structures to eliminate mutex overhead in the `OrderBook`.
 - Reducing tail latencies (p95, p99, and max latency) across all components to improve consistency under high load.
 
+## Tests
+This project includes unit, integration, and performance benchmarks for key components of the trading engine. Testing ensures correctness, 
+performance consistency, and future extensibility.

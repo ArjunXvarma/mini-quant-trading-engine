@@ -3,7 +3,6 @@
 //
 
 #include "../../include/MarketDataHandler/MarketDataReader.hpp"
-
 #include "MarketDataHandler/ThreadSafeTickQueue.hpp"
 
 MarketDataReader::MarketDataReader(const std::string& filename) : filename(filename), file(filename) {

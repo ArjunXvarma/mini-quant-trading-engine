@@ -43,6 +43,7 @@ set(TEST_FILES
         orderMatchingStrategy.cpp
         tradingStrategy.cpp
         tickQueue.cpp
+        orderbook.cpp
 )
 
 # -----------------------------

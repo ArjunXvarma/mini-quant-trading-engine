@@ -51,7 +51,7 @@ TEST(OrderBookTest, MultipleOrdersSamePrice) {
 
     EXPECT_FALSE(book.isEmpty());
 
-    // Add a sell order that should partially match the earliest buy order
+    // Sell order that partially matches the previous buy order
     auto sell = std::make_shared<LimitOrder>(3, 100.0, 25, 100.0);
     sell->setOrderType(OrderType::SELL);
     book.addOrder(sell);

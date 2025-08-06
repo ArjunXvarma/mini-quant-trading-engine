@@ -382,5 +382,25 @@ insertions (e.g., balanced trees or heaps).
 - Reducing tail latencies (p95, p99, and max latency) across all components to improve consistency under high load.
 
 ## Tests
-This project includes unit, integration, and performance benchmarks for key components of the trading engine. Testing ensures correctness, 
-performance consistency, and future extensibility.
+This project includes unit testing for key parts of the trading engine. The project uses google test for testing. The parts covered in this 
+test are:
+- `MarketDataReader`
+- `Orderbook`
+- `OrderMatchingStrategy`
+- `TradingStrategy`
+
+### Running tests
+**CMake**
+```
+# Install dependencies
+sudo apt update && sudo apt install -y cmake g++ ninja-build
+
+# Go to the Tests directory
+cmake -S Tests -B build/tests -G Ninja
+
+# Build Engine_tests
+cmake --build build/tests
+
+# Run unit tests
+./build/tests/Engine_tests
+```

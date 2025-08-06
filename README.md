@@ -382,20 +382,24 @@ insertions (e.g., balanced trees or heaps).
 - Reducing tail latencies (p95, p99, and max latency) across all components to improve consistency under high load.
 
 ## Tests
-This project includes unit testing for key parts of the trading engine. The project uses google test for testing. The parts covered in this 
-test are:
+This project includes unit tests to validate the core functionality and correctness of the trading engine. The testing suite is built using 
+**Google Test** and covers critical components of the system.
 - `MarketDataReader`
 - `Orderbook`
 - `OrderMatchingStrategy`
 - `TradingStrategy`
 
 ### Running tests
-**CMake**
-```
-# Install dependencies
-sudo apt update && sudo apt install -y cmake g++ ninja-build
+#### Prerequisites
+Make sure the following dependencies are installed:
 
-# Go to the Tests directory
+```
+sudo apt update && sudo apt install -y cmake g++ ninja-build
+```
+
+#### Build and run (via CMake)
+```
+# Configure the test build
 cmake -S Tests -B build/tests -G Ninja
 
 # Build Engine_tests
@@ -404,3 +408,16 @@ cmake --build build/tests
 # Run unit tests
 ./build/tests/Engine_tests
 ```
+
+#### Output
+The test results are directly shown in the terminal with pass/fail summaries. 
+
+> All core components are covered by the tests, and more test cases will be added as the engine evolves.
+
+## Conclusion
+This project is a basic yet performant quant trading engine, built with modern C++ and designed to handle real-world market data for 
+a single stock. I've tried to demonstrate a clear focus on performance, modular design, and scalability, with benchmarks and tests that 
+reflect practical use cases.
+
+As the project evolves, future optimizations will aim to push the boundaries of latency, throughput, and concurrency—bringing it closer to 
+production-grade HFT systems.

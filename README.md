@@ -344,6 +344,9 @@ docker run --rm -it quant_engine
 The engine was benchmarked across four key components: `MarketDataReader`, `OrderBook`, `OrderMatchingStrategy` and `TradingStrategy`.
 Below is a summary of their performance characteristics through statistical visualisations.
 
+> Performance results may vary depending on system specifications. All benchmarks in this project were conducted on an Apple MacBook Pro 
+with an M2 Pro chip (11-core CPU, 19-core GPU).
+
 ### MarketData Benchmark
 ![MarketDataReader Box plot](Performance/results/graphs/MarketDataBenchmark_box_plot.png)
 The box plot of the `MarketDataBenchmark` shows a highly concentrated distribution of latencies near the lower end of the scale, with a 

@@ -14,7 +14,7 @@
 class OrderFactory {
 public:
     virtual std::shared_ptr<Order> createOrder(int traderId, double price, int quantity) = 0;
-    virtual ~OrderFactory();
+    virtual ~OrderFactory() {}
 };
 
 #endif //ORDERFACTORY_HPP

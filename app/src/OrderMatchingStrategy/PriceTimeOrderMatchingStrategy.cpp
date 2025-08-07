@@ -4,10 +4,7 @@
 #include <iomanip>
 #include <sstream>
 
-void matchBuyOrder(
-    std::shared_ptr<Order> buyOrder,
-    std::vector<std::shared_ptr<Order>>& sellOrders
-) {
+void matchBuyOrder(std::shared_ptr<Order> buyOrder, std::vector<std::shared_ptr<Order>>& sellOrders) {
     if (!buyOrder || buyOrder->getQuantity() <= 0) return;
 
     std::ostringstream oss;

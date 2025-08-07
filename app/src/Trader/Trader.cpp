@@ -41,10 +41,8 @@ void Trader::buy(Stock& stock, int quantity) {
         }
     }
     catch (const TraderException& e) {
-        // Handle trader-specific exceptions
         std::cerr << "Trader Exception: " << e.what() << std::endl;
     } catch (const std::exception& e) {
-        // Handle other exceptions (if any)
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 }
@@ -52,18 +50,16 @@ void Trader::buy(Stock& stock, int quantity) {
 void Trader::sell(Stock& stock, int quantity) {
     try {
         if (orderFactory != nullptr && orderBook != nullptr) {
-            	std::shared_ptr<Order> ord = orderFactory->createOrder(id, -stock.getPrice(), quantity);
-            	orders.push_back(ord);
-            	if (ord != nullptr) {
-                	orderBook->addOrder(ord);
-            	}
+            std::shared_ptr<Order> ord = orderFactory->createOrder(id, -stock.getPrice(), quantity);
+            orders.push_back(ord);
+            if (ord != nullptr) {
+                orderBook->addOrder(ord);
+            }
         }
     }
     catch (const TraderException& e) {
-        // Handle trader-specific exceptions
         std::cerr << "Trader Exception: " << e.what() << std::endl;
     } catch (const std::exception& e) {
-        // Handle other exceptions (if any)
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 }

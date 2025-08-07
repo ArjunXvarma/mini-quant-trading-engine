@@ -29,8 +29,8 @@ public:
 class Trader {
 public:
     Trader();
-    Trader(const std::string&);
-    Trader(const std::string&, const Stock&, OrderFactory*, OrderBook*);
+    Trader(const std::string& name);
+    Trader(const std::string& name, const Stock& stock, OrderFactory* orderFactory, OrderBook* orderBook);
     
     void buy(Stock& stock, int quantity);
     void sell(Stock& stock, int quantity);

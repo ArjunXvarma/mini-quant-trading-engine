@@ -25,8 +25,8 @@ Trader::Trader(const std::string& name)
 
 }
 
-Trader::Trader(const std::string& n, const Stock& s, OrderFactory* o, OrderBook* b)
-    	: id{id_counter++}, name{n}, stock{s}, orderFactory{o}, orderBook{b} {
+Trader::Trader(const std::string& name, const Stock& stock, OrderFactory* orderFactory, OrderBook* orderBook)
+    	: id{id_counter++}, name{name}, stock{stock}, orderFactory{orderFactory}, orderBook{orderBook} {
 
 }
 

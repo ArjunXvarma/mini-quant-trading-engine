@@ -340,9 +340,6 @@ docker run --rm -it quant_engine
 > By default, logging is disabled, to enable logging go to the `Logger.hpp` file located in `app/include/Utils/`, and define the macro 
 `ENABLE_LOGGING`.
 
-> Performance results may vary depending on system specifications. All benchmarks in this project were conducted on an Apple MacBook Pro 
-with an M2 Pro chip (11-core CPU, 19-core GPU).
-
 ## Performance
 The engine was benchmarked across four key components: `MarketDataReader`, `OrderBook`, `OrderMatchingStrategy` and `TradingStrategy`.
 Below is a summary of their performance characteristics through statistical visualisations.

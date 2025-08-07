@@ -42,3 +42,4 @@
 
 # pycache
 Performance/graphs/src/__pycache__
+*.DS_Store

@@ -19,10 +19,10 @@ private:
 
 public:
     ThreadSafeTickQueue() = default;
-    ThreadSafeTickQueue(const ThreadSafeTickQueue&) = delete;             // prevent copy
-    ThreadSafeTickQueue& operator=(const ThreadSafeTickQueue&) = delete;  // prevent copy
-    ThreadSafeTickQueue(ThreadSafeTickQueue&&) = default;                 // allow move
-    ThreadSafeTickQueue& operator=(ThreadSafeTickQueue&&) = default;
+    ThreadSafeTickQueue(const ThreadSafeTickQueue& other) = delete;
+    ThreadSafeTickQueue& operator=(const ThreadSafeTickQueue& other) = delete;
+    ThreadSafeTickQueue(ThreadSafeTickQueue&& other) = default;
+    ThreadSafeTickQueue& operator=(ThreadSafeTickQueue&& other) = default;
 
     void enqueue(const MarketTick& tick) {
         queue.enqueue(tick);

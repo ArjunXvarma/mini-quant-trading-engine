@@ -87,12 +87,12 @@ classDiagram
 ```
 
 The Market Data module is designed to efficiently ingest, parse, store, and stream real-time bid-ask market data for a single stock symbol. 
-It is composed of four core components: MarketTick, MarketDataReader, ThreadSafeTickQueue, and Stock. The MarketDataReader is responsible 
-for reading market tick data from a CSV file, line-by-line or in bulk, and encapsulating each row as a MarketTick object that contains 
-timestamped bid/ask information. Parsed ticks are then enqueued into the ThreadSafeTickQueue, a thread-safe streaming queue built using 
+It is composed of four core components: `MarketTick`, `MarketDataReader`, `ThreadSafeTickQueue`, and `Stock`. The `MarketDataReader` is responsible 
+for reading market tick data from a CSV file, line-by-line or in bulk, and encapsulating each row as a `MarketTick` object that contains 
+timestamped bid/ask information. Parsed ticks are then enqueued into the `ThreadSafeTickQueue`, a thread-safe streaming queue built using 
 the high-performance [moodycamel ConcurrentQueue](https://github.com/cameron314/concurrentqueue), which is optimized for low-latency producer-consumer operations. This enables the system 
-to decouple I/O-bound data ingestion from CPU-bound strategy processing. The Stock class maintains the current state of the market by 
-updating its internal price and quote values every time it receives a new MarketTick. This modular architecture allows concurrent tick 
+to decouple I/O-bound data ingestion from CPU-bound strategy processing. The `Stock` class maintains the current state of the market by 
+updating its internal price and quote values every time it receives a new `MarketTick`. This modular architecture allows concurrent tick 
 consumption by trading strategies while preserving accuracy and performance, forming the backbone of the engine’s real-time decision-making 
 loop.
 
@@ -157,8 +157,8 @@ classDiagram
 The Order System module provides a flexible and extensible framework for creating and managing different types of orders within the trading
 engine. At its core is the abstract Order class, which encapsulates common order attributes like price, quantity, trader ID, timestamp, and 
 type (buy/sell). It also includes a unique order ID generator to track individual orders throughout their lifecycle. Specialized 
-orders—MarketOrder and LimitOrder—inherit from this base class, implementing specific behaviors while maintaining a consistent interface. 
-Order creation is delegated to corresponding factory classes (MarketOrderFactory and LimitOrderFactory), following the Factory Method 
+orders—`MarketOrder` and `LimitOrder`—inherit from this base class, implementing specific behaviors while maintaining a consistent interface. 
+`Order` creation is delegated to corresponding factory classes (`MarketOrderFactory` and `LimitOrderFactory`), following the Factory Method 
 Pattern, which promotes modularity and clean abstraction. This design allows easy extension of new order types in the future without 
 altering existing logic. Together, these components form a robust and scalable order generation pipeline, ready to feed into matching and 
 execution subsystems of the engine.
@@ -371,7 +371,7 @@ internal scheduling and memory access patterns.
 
 ### Strategy Benchmark
 ![Strategy benchmark log histogram](Performance/results/graphs/StrategyBenchmark_log_histogram.png)
-The log-scale histogram of StrategyBenchmark (as shown in the uploaded image) shows a heavy concentration of latencies in the 4–6 ns range, 
+The log-scale histogram of `StrategyBenchmark` (as shown in the uploaded image) shows a heavy concentration of latencies in the 4–6 ns range, 
 with a few operations reaching up to 40 ns. The use of a logarithmic y-axis helps reveal low-frequency higher-latency events that would be 
 obscured on a linear scale. The skew remains mild, with most of the computation finishing within a few nanoseconds.
 

@@ -424,3 +424,5 @@ reflect practical use cases.
 
 As the project evolves, future optimizations will aim to push the boundaries of latency, throughput, and concurrency—bringing it closer to 
 production-grade HFT systems.
+
+If you found this project helpful or interesting, a ⭐️ on the repository would be greatly appreciated!

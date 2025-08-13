@@ -2,8 +2,6 @@
 // Created by Arjun Varma on 14/07/25.
 //
 
-// OrderBook.hpp
-
 #ifndef ORDERBOOK_HPP
 #define ORDERBOOK_HPP
 
